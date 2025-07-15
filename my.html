@@ -1,0 +1,1752 @@
+<!DOCTYPE html>
+<html lang="en" class="light-theme">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNOVA - #1 Free Fitness App</title>
+    <style>
+        :root {
+            --primary: #e03694;
+            --primary-dark: #c12a7d;
+            --text: #191348;
+            --text-light: #6c757d;
+            --bg: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --border: #dee2e6;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme {
+            --primary: #ff4da6;
+            --primary-dark: #e03694;
+            --text: #f8f9fa;
+            --text-light: #adb5bd;
+            --bg: #121212;
+            --bg-secondary: #1e1e1e;
+            --border: #2d2d2d;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-text-size-adjust: 100%;
+            height: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--bg);
+            box-shadow: 0 2px 10px var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+
+        .nav-links a:hover {
+            background-color: var(--bg-secondary);
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(224, 54, 148, 0.4);
+        }
+
+        .btn-chatbot {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s;
+        }
+
+        .btn-chatbot:hover {
+            background-color: #3e8e41;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(rgba(25, 19, 72, 0.8), rgba(25, 19, 72, 0.8)),
+                        url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-secondary);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px var(--shadow);
+            transition: transform 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .testimonial {
+            background-color: var(--bg);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin: 0 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 100px 0;
+            text-align: center;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                        url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            font-size: 1.1rem;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        /* Workout Preview */
+        .workout-preview {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            margin: 40px 0;
+        }
+
+        .workout-preview video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .workout-preview .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+
+        .workout-preview h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .play-btn {
+            font-size: 1.2rem;
+            padding: 12px 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-secondary);
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--text-light);
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.2rem;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Dark Mode Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px var(--shadow);
+            z-index: 1000;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-content {
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+        }
+        .remember {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text);
+        }
+
+        .remember input {
+            margin-right: 0.5rem;
+        }
+        /* Chatbot Button */
+        .chatbot-btn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+          .btn-chatbot:hover {
+            background-color: #3e8e41;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+        }
+
+         /* Chatbot Modal Styles */
+        .chatbot-modal {
+            max-width: 400px;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chatbot-header {
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 12px 12px 0 0;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .chatbot-body {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: var(--bg-secondary);
+        }
+
+        .chatbot-footer {
+            padding: 15px;
+            background-color: var(--bg);
+            border-radius: 0 0 12px 12px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-message {
+            margin-bottom: 15px;
+            max-width: 80%;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            background-color: var(--bg);
+            padding: 10px 15px;
+            border-radius: 18px 18px 18px 5px;
+            box-shadow: 0 2px 5px var(--shadow);
+        }
+
+        .user-message {
+            align-self: flex-end;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 18px 18px 5px 18px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+
+        .send-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .chatbot-greeting {
+            text-align: center;
+            padding: 20px;
+            color: var(--text-light);
+        }
+
+        .chatbot-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .chatbot-action-btn {
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .chatbot-action-btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+           
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+           
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+           
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container nav-container">
+            <a href="#" class="logo">FITNOVA</a>
+            <nav class="nav-links">
+                <a href="#">Home</a>
+                <a href="#">Workouts</a>
+                <a href="#">Nutrition</a>
+                <a href="#">About</a>
+                <a href="#" class="btn-chatbot">
+                    <i class="fas fa-robot"></i> Ask Nova
+                </a>
+                <a href="#" class="btn" id="openAuthModal">Sign Up</a>
+            </nav>
+        </div>
+    </header>        
+     <!-- Chatbot Button -->
+    <div class="chatbot-btn" id="chatbotBtn">
+        <i class="fas fa-robot"></i>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 id="greeting">Hey Fit Fam, Ready to Glow Up?</h1>
+            <p>Unlimited access to the world's best workouts, meditation, nutrition and more.</p>
+            <a href="#" class="btn" id="heroSignupBtn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+     <div class="section-buttons">
+
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">A Full Gym & Wellness Coach. Always On.</h2>
+                <div class="features-grid">
+    <div class="feature-card" onclick="window.location.href='#fitness-section'">
+        <div class="feature-icon">
+            <i class="fas fa-dumbbell"></i>
+        </div>
+        <h3>Fitness</h3>
+        <p>Be more active and reach your goals with custom fitness programs.</p>
+        <div class="motivational-spark">
+         <div class="body-part-buttons">
+  <button class="body-btn face-btn" data-part="face">
+    <i class="fas fa-smile"></i>
+    <span>Face Yoga</span>
+  </button>
+  
+  <button class="body-btn belly-btn" data-part="belly">
+    <i class="fas fa-apple-alt"></i>
+    <span>Belly Fat</span>
+  </button>
+  
+  <button class="body-btn arm-btn" data-part="arms">
+    <i class="fas fa-hand-paper"></i>
+    <span>Arm Tone</span>
+  </button>
+  
+  <button class="body-btn leg-btn" data-part="legs">
+    <i class="fas fa-walking"></i>
+    <span>Leg Workout</span>
+  </button>
+  
+  <button class="body-btn full-btn" data-part="full">
+    <i class="fas fa-running"></i>
+    <span>Full Body</span>
+  </button>
+</div>   
+        
+</div>
+    </div>
+                <div class="feature-card"
+                    onclick="window.location.href='#mindfulness-section'">
+        <div class="feature-icon">
+            <i class="fas fa-brain"></i>
+        </div>
+        <h3>Mindfulness</h3>
+        <p>Reduce stress and be more mindful with meditation and yoga classes.</p>
+        <button class="mindfulness-btn" id="meditationTrigger">
+  <i class="fas fa-spa"></i>
+  <span>Start 10-Min Meditation</span>
+</button>
+<div class="meditation-modal" id="meditationModal">
+  <div class="meditation-container">
+    <div class="meditation-header">
+      <h3>Guided Meditation</h3>
+      <button class="close-meditation">&times;</button>
+    </div>
+    <div class="meditation-body">
+      <div class="meditation-guide">
+        <div class="ai-avatar">
+          <div class="ai-eyes">
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+          </div>
+          <div class="ai-mouth"></div>
+        </div>
+        <div class="guide-text" id="guideText">
+          Let's begin our 10-minute mindfulness journey...
+        </div>
+      </div>
+      <div class="meditation-timer">
+        <div class="time-display">10:00</div>
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+      <div class="meditation-controls">
+        <button class="control-btn" id="playPauseBtn">
+          <i class="fas fa-play"></i>
+        </button>
+        <button class="control-btn" id="restartBtn">
+          <i class="fas fa-redo"></i>
+        </button>
+        <div class="volume-control">
+          <i class="fas fa-volume-up"></i>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+                <div class="feature-card"
+                    onclick="window.location.href='#nutrition-section'">
+        <div class="feature-icon">
+            <i class="fas fa-paper-plane"></i>
+        </div>
+        <h3>Progress</h3>
+        <p>Make fitness a habit. Motivation is what gets you started. Habit is what keeps you going. </p>
+        <div class="nav-links">
+    <!-- Your existing nav links... -->
+    <div style="display: grid; place-items: center;">
+    <button class="btn progress-button">
+        <i class="fas fa-chart-line"></i> My Progress
+    </button>
+    </div>
+        
+        </div>
+    </div>
+                <div class="feature-card"
+                    onclick="window.location.href='#rep-counter'">
+        <div class="feature-icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Rep Counter</h3>
+        <p>Manual clicker to track the number of repetitions performed during exercise.</p>
+        <div class="rep-container">
+
+  <!-- Rep Counter Section -->
+  <div class="rep-counter">
+    <!-- Current Rep Count -->
+    <div class="rep-display">
+      <span class="rep-value">0</span>
+      <span class="rep-label">REPS</span>
+    </div>
+
+    <!-- Controls (Add Rep & Reset) -->
+    <div class="rep-controls">
+      <button class="rep-btn add-rep">+</button>
+      <button class="rep-btn reset-reps">Reset</button>
+    </div>
+
+    <!-- History of Sets -->
+    <div class="rep-history">
+      <h4>Recent Sets</h4>
+      <ul class="sets-list"></ul>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+<style>
+
+    .feature-card {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    
+    .feature-resources {
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px dashed #eee;
+        display: none;
+    }
+    
+    .feature-card:hover .feature-resources {
+        display: block;
+    }
+    
+    .feature-resources a {
+        display: block;
+        color: var(--primary);
+        margin: 5px 0;
+        font-size: 0.9rem;
+        text-decoration: none;
+    }
+    
+    .feature-resources a:hover {
+        text-decoration: underline;
+    }
+
+    /* Body Part Button Styles */
+  .body-part-buttons {
+    display: flex;
+   display: flex;          /* Makes buttons align in a row */
+  gap: 10px;             /* Adds space between buttons */
+  overflow-x: auto;      /* Allows horizontal scrolling if needed */
+  padding: 10px 0;       /* Optional: Adds padding */
+  }
+  
+  .body-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--bg-secondary);
+    color: var(--text);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .body-btn i {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .body-btn span {
+    font-size: 0.9rem;
+  }
+  
+  /* Hover Effects */
+  .body-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow);
+  }
+  
+  .body-btn:hover i {
+    transform: scale(1.2);
+  }
+  
+  /* Specific Button Colors */
+  .face-btn:hover { background-color: #FFD6E0; color: #FF2D78; }
+  .belly-btn:hover { background-color: #C1F3E5; color: #00B894; }
+  .arm-btn:hover { background-color: #FFE8B6; color: #F39C12; }
+  .leg-btn:hover { background-color: #D6E4FF; color: #3498DB; }
+  .full-btn:hover { background-color: #E0D6FF; color: #9B59B6; }
+  
+  /* Active State */
+  .body-btn.active {
+    background-color: var(--primary);
+    color: white;
+  }
+  
+  .body-btn.active i {
+    color: white;
+  }
+  
+  /* Pulse Animation */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  .body-btn:active {
+    animation: pulse 0.3s ease;
+  }
+  
+  /* Responsive */
+  @media (max-width: 600px) {
+    .body-part-buttons {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+    
+  /* Motivational Spark Styles */
+  .motivational-spark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin: 25px 0;
+    animation: fadeIn 1s ease-out;
+  }
+  
+  .spark-line {
+    height: 1px;
+    width: 50px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    opacity: 0.7;
+  }
+  
+  .live-counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    animation: pulse 2s infinite;
+  }
+  
+  .live-counter i {
+    color: var(--primary);
+  }
+  
+  #activeUsers {
+    font-weight: bold;
+    color: var(--primary);
+  }
+  
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+  
+  /* Dark mode adaptation */
+  .dark-theme .spark-line {
+    background: linear-gradient(90deg, transparent, var(--primary-dark), transparent);
+  }
+
+    /* Mindfulness Button Styles */
+  .mindfulness-btn {
+    background: linear-gradient(135deg, #6B73FF 0%, #8E54E9 100%);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 4px 15px rgba(107, 115, 255, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .mindfulness-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(107, 115, 255, 0.4);
+  }
+  
+  .mindfulness-btn i {
+    font-size: 1.0rem;
+    margin-top: 20px;
+  }
+  
+  /* Meditation Modal */
+  .meditation-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .meditation-container {
+    background-color: var(--bg);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .meditation-header {
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #6B73FF 0%, #8E54E9 100%);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .close-meditation {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .meditation-body {
+    padding: 20px;
+  }
+  
+  /* AI Avatar */
+  .ai-avatar {
+    width: 80px;
+    height: 80px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ai-eyes {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+  }
+  
+  .eye {
+    width: 15px;
+    height: 15px;
+    background-color: #333;
+    border-radius: 50%;
+    animation: blink 4s infinite;
+  }
+  
+  .ai-mouth {
+    position: absolute;
+    bottom: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 10px;
+    background-color: #333;
+    border-radius: 0 0 10px 10px;
+    animation: talk 0.5s infinite alternate;
+  }
+  
+  /* Timer */
+  .meditation-timer {
+    text-align: center;
+    margin: 25px 0;
+  }
+  
+  .time-display {
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  
+  .progress-button {
+  margin-top: 20px; 
+}
+
+  .progress-bar {
+    width: 100%;
+    height: 6px;
+    background-color: var(--bg-secondary);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #6B73FF 0%, #8E54E9 100%);
+    transition: width 1s linear;
+  }
+  
+  /* Controls */
+  .meditation-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .control-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    background-color: var(--primary);
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+  
+  .control-btn:hover {
+    transform: scale(1.1);
+  }
+  
+  .volume-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+  }
+  
+  /* Animations */
+  @keyframes blink {
+    0%, 48%, 52%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+  }
+  
+  @keyframes talk {
+    0% { height: 5px; }
+    100% { height: 10px; }
+  }
+  
+  /* Dark mode */
+  .dark-theme .ai-avatar {
+    background-color: #444;
+  }
+  
+  .dark-theme .eye, .dark-theme .ai-mouth {
+    background-color: #ddd;
+  }
+    .rep-counter-container {
+        background-color: var(--bg-secondary);
+        padding: 20px;
+        border-radius: 10px;
+        margin: 20px 0;
+        box-shadow: 0 3px 10px var(--shadow);
+        text-align: center;
+        max-width: 300px;
+    }
+
+    .rep-display {
+        font-size: 2.5rem;
+        margin: 15px 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rep-value {
+        font-weight: bold;
+        color: var(--primary);
+    }
+
+    .rep-label {
+        font-size: 1rem;
+        color: var(--text-light);
+        margin-top: 5px;
+    }
+
+    .rep-controls {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .rep-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .add-rep {
+        background-color: var(--primary);
+        color: white;
+    }
+
+    .add-rep:hover {
+        background-color: var(--primary-dark);
+        transform: scale(1.05);
+    }
+
+    .reset-reps {
+        background-color: var(--border);
+        color: var(--text);
+    }
+
+    .reset-reps:hover {
+        background-color: var(--text-light);
+    }
+
+    .rep-history {
+        margin-top: 20px;
+        border-top: 1px solid var(--border);
+        padding-top: 15px;
+    }
+
+    .sets-list {
+        list-style: none;
+        padding: 0;
+        max-height: 150px;
+        overflow-y: auto;
+    }
+
+    .sets-list li {
+        padding: 8px 0;
+        border-bottom: 1px dashed var(--border);
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Animation for rep addition */
+    @keyframes repPulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .rep-added {
+        animation: repPulse 0.3s ease;
+    }
+</style>
+
+<script>
+    // Smooth scroll to sections
+    document.querySelectorAll('.feature-card').forEach(card => {
+        card.addEventListener('click', function() {
+            const targetId = this.getAttribute('onclick').match(/'([^']+)'/)[1];
+            document.querySelector(targetId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+
+<script>
+  // Meditation Script
+  document.addEventListener('DOMContentLoaded', function() {
+    const meditationTrigger = document.getElementById('meditationTrigger');
+    const meditationModal = document.getElementById('meditationModal');
+    const closeMeditation = document.querySelector('.close-meditation');
+    const playPauseBtn = document.getElementById('playPauseBtn');
+    const restartBtn = document.getElementById('restartBtn');
+    const volumeSlider = document.getElementById('volumeSlider');
+    const guideText = document.getElementById('guideText');
+    const timeDisplay = document.querySelector('.time-display');
+    const progressFill = document.querySelector('.progress-fill');
+    
+    // Background audio
+    const backgroundAudio = new Audio('https://assets.mixkit.co/music/preview/mixkit-forest-flow-1866.mp3');
+    backgroundAudio.loop = true;
+    
+    // Meditation script
+    const meditationScript = [
+      { time: 0, text: "Let's begin our 10-minute mindfulness journey..." },
+      { time: 10, text: "Find a comfortable position... Close your eyes..." },
+      { time: 30, text: "Take a deep breath in... and slowly exhale..." },
+      { time: 60, text: "Notice your breath... In... and out..." },
+      { time: 120, text: "If your mind wanders, gently bring it back..." },
+      { time: 240, text: "Feel your body relaxing with each breath..." },
+      { time: 360, text: "Observe your thoughts without judgment..." },
+      { time: 480, text: "Bring awareness to your whole body..." },
+      { time: 540, text: "Slowly prepare to end our session..." },
+      { time: 570, text: "Gently bring awareness back to the room..." },
+      { time: 600, text: "When you're ready, open your eyes..." }
+    ];
+    
+    let meditationInterval;
+    let secondsLeft = 600; // 10 minutes
+    let isPlaying = false;
+    
+    // Open modal
+    meditationTrigger.addEventListener('click', function() {
+      meditationModal.style.display = 'flex';
+      updateTimerDisplay();
+      backgroundAudio.volume = volumeSlider.value;
+      backgroundAudio.play();
+      startMeditation();
+    });
+    
+    // Close modal
+    closeMeditation.addEventListener('click', function() {
+      stopMeditation();
+      meditationModal.style.display = 'none';
+      backgroundAudio.pause();
+    });
+    
+    // Play/Pause
+    playPauseBtn.addEventListener('click', function() {
+      if (isPlaying) {
+        pauseMeditation();
+      } else {
+        startMeditation();
+      }
+    });
+    
+    // Restart
+    restartBtn.addEventListener('click', function() {
+      restartMeditation();
+    });
+    
+    // Volume control
+    volumeSlider.addEventListener('input', function() {
+      backgroundAudio.volume = this.value;
+    });
+    
+    function startMeditation() {
+      isPlaying = true;
+      playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+      backgroundAudio.play();
+      
+      const startTime = Date.now();
+      const endTime = startTime + (secondsLeft * 1000);
+      
+      clearInterval(meditationInterval);
+      meditationInterval = setInterval(function() {
+        secondsLeft = Math.round((endTime - Date.now()) / 1000);
+        
+        if (secondsLeft <= 0) {
+          clearInterval(meditationInterval);
+          secondsLeft = 0;
+          isPlaying = false;
+          playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+        
+        updateTimerDisplay();
+        updateGuideText();
+      }, 1000);
+    }
+    
+    function pauseMeditation() {
+      isPlaying = false;
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+      backgroundAudio.pause();
+      clearInterval(meditationInterval);
+    }
+    
+    function stopMeditation() {
+      isPlaying = false;
+      playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+      backgroundAudio.pause();
+      clearInterval(meditationInterval);
+      secondsLeft = 600;
+      updateTimerDisplay();
+    }
+    
+    function restartMeditation() {
+      stopMeditation();
+      secondsLeft = 600;
+      updateTimerDisplay();
+      startMeditation();
+    }
+    
+    function updateTimerDisplay() {
+      const minutes = Math.floor(secondsLeft / 60);
+      const seconds = secondsLeft % 60;
+      timeDisplay.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+      progressFill.style.width = `${100 - (secondsLeft / 600 * 100)}%`;
+    }
+    
+    function updateGuideText() {
+      for (let i = meditationScript.length - 1; i >= 0; i--) {
+        if (secondsLeft <= meditationScript[i].time) {
+          guideText.textContent = meditationScript[i].text;
+          break;
+        }
+      }
+    }
+  });
+</script>
+
+<script>
+    // Rep Counter Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        // Initialize variables
+        let repCount = 0;
+        let sets = JSON.parse(localStorage.getItem('repSets')) || [];
+        
+        // DOM elements
+        const repValue = document.querySelector('.rep-value');
+        const addRepBtn = document.querySelector('.add-rep');
+        const resetRepsBtn = document.querySelector('.reset-reps');
+        const setsList = document.querySelector('.sets-list');
+        
+        // Load previous sets
+        updateSetsList();
+        
+        // Add rep button functionality
+        addRepBtn.addEventListener('click', function() {
+            repCount++;
+            repValue.textContent = repCount;
+            repValue.classList.add('rep-added');
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                repValue.classList.remove('rep-added');
+            }, 300);
+            
+            // Haptic feedback on mobile
+            if ('vibrate' in navigator) {
+                navigator.vibrate(50);
+            }
+        });
+        
+        // Reset button functionality
+        resetRepsBtn.addEventListener('click', function() {
+            if (repCount > 0) {
+                // Save the set before resetting
+                const newSet = {
+                    reps: repCount,
+                    date: new Date().toLocaleTimeString()
+                };
+                sets.unshift(newSet);
+                
+                // Keep only last 5 sets
+                if (sets.length > 5) sets = sets.slice(0, 5);
+                
+                // Save to localStorage
+                localStorage.setItem('repSets', JSON.stringify(sets));
+                
+                // Update the sets list
+                updateSetsList();
+            }
+            
+            // Reset counter
+            repCount = 0;
+            repValue.textContent = repCount;
+        });
+        
+        // Function to update the sets list
+        function updateSetsList() {
+            setsList.innerHTML = '';
+            
+            
+            sets.forEach((set, index) => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span>Set ${index + 1}:</span>
+                    <span><strong>${set.reps}</strong> reps</span>
+                    <span class="set-time">${set.date}</span>
+                `;
+                setsList.appendChild(li);
+            });
+        }
+        
+        // Keyboard support (spacebar to add rep)
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                addRepBtn.click();
+            }
+        });
+    });
+</script>
+                
+
+    <!-- Workout Preview -->
+    <div class="container">
+        <div class="workout-preview">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-doing-squats-with-a-barbell-3983-large.mp4" type="video/mp4">
+            </video>
+            <div class="overlay">
+                <h3>Try this 10-min HIIT workout</h3>
+               <button class="btn play-btn" onclick="window.open('https://www.youtube.com/watch?v=UBMk30rjy0o', '_blank')">
+                    <i class="fas fa-play"></i> Try Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Our Vision for Your Fitness</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p class="testimonial-text">"To find a balanced fitness solution,
+                    we're creating an app that truly adapts to your lifestyle.
+                    No more generic programs - just smart, personalized guidance."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>FitNova</h3>
+                    <p>The #1 free fitness app with celebrity trainers, personalized plans and a supportive community.</p>
+                    <div class="social-links">
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Workouts</h3>
+                    <ul>
+                        <li><a href="#">HIIT</a></li>
+                        <li><a href="#">Yoga</a></li>
+                        <li><a href="#">Strength</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Nutrition Guides</a></li>
+                        <li><a href="#">Meal Plans</a></li>
+                        <li><a href="#">Sleep</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 FitNova Inc. All Rights Reserved. 
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </div>
+
+    <script>
+        // Dark mode toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+       
+        function enableDarkMode() {
+            html.classList.remove('light-theme');
+            html.classList.add('dark-theme');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('darkMode', 'true');
+        }
+       
+        function disableDarkMode() {
+            html.classList.remove('dark-theme');
+            html.classList.add('light-theme');
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('darkMode', 'false');
+        }
+       
+        themeToggle.addEventListener('click', () => {
+            if (html.classList.contains('dark-theme')) {
+                disableDarkMode();
+            } else {
+                enableDarkMode();
+            }
+        });
+       
+        // Check for saved preference or system preference
+        const savedMode = localStorage.getItem('darkMode');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+       
+        if (savedMode === 'true' || (prefersDark && savedMode === null)) {
+            enableDarkMode();
+        } else {
+            disableDarkMode();
+        }
+       
+        // Personalized greeting based on time
+        const hour = new Date().getHours();
+        let greeting;
+        if (hour < 12) {
+            greeting = 'Good morning';
+        } else if (hour < 18) {
+            greeting = 'Good afternoon';
+        } else {
+            greeting = 'Good evening';
+        }
+        document.getElementById('greeting').textContent = `${greeting}, ready to workout?`;
+
+    </script>
+
+    <!-- Signup Modal -->
+    <div class="modal" id="signupModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeSignupModal">&times;</button>
+            <h2 class="form-title">Sign Up - Fitness AI Trainer</h2>
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" class="form-control" required>
+                        <option value="">Select gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                        <option value="prefer-not-to-say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm)</label>
+                    <input type="number" id="height" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight (kg)</label>
+                    <input type="number" id="weight" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="fitnessGoal">Fitness Goal</label>
+                    <select id="fitnessGoal" class="form-control" required>
+                        <option value="">Select goal</option>
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="muscle-gain">Muscle Gain</option>
+                        <option value="maintenance">Maintenance</option>
+                        <option value="improve-endurance">Improve Endurance</option>
+                        <option value="improve-flexibility">Improve Flexibility</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="activityLevel">Activity Level</label>
+                    <select id="activityLevel" class="form-control" required>
+                        <option value="">Select activity level</option>
+                        <option value="sedentary">Sedentary (little or no exercise)</option>
+                        <option value="lightly-active">Lightly Active (light exercise 1-3 days/week)</option>
+                        <option value="moderately-active">Moderately Active (moderate exercise 3-5 days/week)</option>
+                        <option value="very-active">Very Active (hard exercise 6-7 days/week)</option>
+                        <option value="extra-active">Extra Active (very hard exercise & physical job)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="password">Create Password</label>
+                    <input type="password" id="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn" style="width: 100%;">Create Account</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div class="modal" id="chatbotModal">
+        <div class="modal-content chatbot-modal">
+            <div class="chatbot-header">
+                AI Fitness Trainer
+            </div>
+            <div class="chatbot-body" id="chatbotBody">
+                <div class="chat-message bot-message">
+                    Hi! Tell me your fitness goal and let's go!
+                </div>
+                <!-- Chat messages will be added here dynamically -->
+            </div>
+            <div class="chatbot-footer">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message...">
+                <button class="send-btn" id="sendMessageBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal functionality
+        const signupModal = document.getElementById('signupModal');
+        const chatbotModal = document.getElementById('chatbotModal');
+        const openAuthModal = document.getElementById('openAuthModal');
+        const heroSignupBtn = document.getElementById('heroSignupBtn');
+        const closeSignupModal = document.getElementById('closeSignupModal');
+        const chatbotBtn = document.getElementById('chatbotBtn');
+        const signupForm = document.getElementById('signupForm');
+
+        // Open signup modal
+        openAuthModal.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.classList.add('show');
+        });
+
+        heroSignupBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.classList.add('show');
+        });
+
+        // Open chatbot modal
+        chatbotBtn.addEventListener('click', () => {
+            chatbotModal.classList.add('show');
+        });
+
+        // Close modals
+        closeSignupModal.addEventListener('click', () => {
+            signupModal.classList.remove('show');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === signupModal) {
+                signupModal.classList.remove('show');
+            }
+            if (e.target === chatbotModal) {
+                chatbotModal.classList.remove('show');
+            }
+        });
+
+        // Form submission
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Here you would typically send the data to your server
+            alert('Account created successfully!');
+            signupModal.classList.remove('show');
+            // Reset form
+            signupForm.reset();
+        });
+
+        // Chatbot functionality
+        const chatInput = document.getElementById('chatInput');
+        const sendMessageBtn = document.getElementById('sendMessageBtn');
+        const chatbotBody = document.getElementById('chatbotBody');
+
+        function addMessage(message, isUser = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message');
+            messageDiv.classList.add(isUser ? 'user-message' : 'bot-message');
+            messageDiv.textContent = message;
+            chatbotBody.appendChild(messageDiv);
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        }
+
+        function handleUserMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                addMessage(message, true);
+                chatInput.value = '';
+                
+                // Bot response logic
+                setTimeout(() => {
+                    if (message.toLowerCase().includes('workout')) {
+                        addMessage("Try mixing cardio with strength training! Want a plan based on your goal?");
+                    } else if (message.toLowerCase().includes('weight') || message.toLowerCase().includes('lose')) {
+                        addMessage("Please tell me your fitness goal first (e.g., weight loss, muscle gain).");
+                    } else if (message.toLowerCase().includes('weight loss')) {
+                        addMessage("Got it! You're working on weight loss. I'll guide your workouts and meals around this goal. Ask about workouts, injuries, moods, etc...");
+                    } else {
+                        addMessage("I'm here to help with your fitness journey! Tell me more about your goals.");
+                    }
+                }, 1000);
+            }
+        }
+
+        // Send message on button click
+        sendMessageBtn.addEventListener('click', handleUserMessage);
+
+        // Send message on Enter key
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleUserMessage();
+            }
+        });
+
+        // Initial greeting
+        setTimeout(() => {
+            addMessage("hello");
+            setTimeout(() => {
+                addMessage("Hi! Tell me your fitness goal and let's go!");
+            }, 800);
+        }, 500);
+    </script>
+</body>
+</html>
