@@ -1,5 +1,5 @@
 # 💪 FITNOVA -  Fitness App
-
+An AI-powered fitness trainer with real-time pose estimation and exercise form correction using React, TensorFlow.js, and MediaPipe BlazePose.
 <div align="center">
 
 ![FITNOVA Logo](https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80)
