@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2025 Bhagyashri Nigdikar
+Copyright (c) 2025 FITNOVA Team
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -19,3 +19,70 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+---
+
+THIRD-PARTY LICENSES
+
+This project uses the following third-party libraries and resources:
+
+1. Font Awesome Icons
+   - License: Font Awesome Free License
+   - URL: https://fontawesome.com/license/free
+   - Usage: Icon fonts and CSS
+
+2. Google Fonts (Poppins)
+   - License: Open Font License
+   - URL: https://scripts.sil.org/OFL
+   - Usage: Web fonts
+
+3. Unsplash Images
+   - License: Unsplash License
+   - URL: https://unsplash.com/license
+   - Usage: Stock photography for backgrounds
+
+4. Mixkit Videos
+   - License: Mixkit License
+   - URL: https://mixkit.co/license/
+   - Usage: Stock videos for workout previews
+
+5. Browser Compatibility Libraries
+   - Various MIT licensed polyfills and compatibility layers
+   - Individual license files included in node_modules
+
+ATTRIBUTION REQUIREMENTS
+
+If you use this software in your project, please include:
+- A link back to the original FITNOVA repository
+- Credit to the FITNOVA development team
+- Notice of any modifications made to the original code
+
+COMMERCIAL USE
+
+This software is free for both personal and commercial use under the MIT license.
+However, please note:
+- Third-party assets (images, videos, fonts) may have their own licensing terms
+- Any branding or trademarked elements should be replaced with your own
+- Commercial use of the "FITNOVA" name and logo is not permitted
+
+CONTRIBUTIONS
+
+By contributing to this project, you agree that your contributions will be licensed
+under the same MIT license that covers the project.
+
+DISCLAIMER
+
+The fitness advice, workout routines, and health-related content in this application
+are for informational purposes only and should not replace professional medical advice.
+Users should consult with healthcare providers before beginning any fitness program.
+
+The developers and contributors of FITNOVA are not responsible for any injuries,
+health issues, or other consequences that may result from using this application.
+
+CONTACT
+
+For licensing questions or permissions beyond the scope of this license, please contact:
+- Email: legal@fitnova.com
+- GitHub: https://github.com/fitnova/app/issues
+
+Last updated: August 3, 2025
