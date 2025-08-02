@@ -1,4 +1,4 @@
-# 💪 FITNOVA - #1 Free Fitness App
+# 💪 FITNOVA -  Fitness App
 
 <div align="center">
 
