@@ -1,27 +1,147 @@
 {
   "version": 2,
+  "name": "fitnova-app",
+  "alias": ["fitnova-demo"],
+  "description": "#1 Free Fitness App - Personalized workouts, meditation, and AI coaching",
+  "scope": "fitnova",
+  "public": true,
+  "github": {
+    "enabled": true,
+    "autoAlias": true,
+    "autoJobCancelation": true,
+    "silent": false
+  },
   "builds": [
     {
-      "src": "client/index.html",
+      "src": "my.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "README.md",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "LICENSE",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "CHANGELOG.md",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "DEPLOYMENT.md",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "my.txt",
       "use": "@vercel/static"
     }
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "https://ai-fitness-trainer-backend.onrender.com/api/$1"
+      "src": "/",
+      "dest": "/my.html"
     },
     {
-      "src": "/(.*)",
-      "dest": "/client/index.html"
+      "src": "/index.html",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/app",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/fitness",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/workout",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/meditation",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/progress",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/about",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/help",
+      "dest": "/my.html"
+    },
+    {
+      "src": "/api/(.*)",
+      "status": 404,
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "dest": "/api-not-available.json"
+    },
+    {
+      "src": "/((?!api/).)*",
+      "dest": "/my.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), accelerometer=(), gyroscope=(), battery=(), ambient-light-sensor=(), web-share=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https:"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=86400"
+        }
+      ]
+    },
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "functions": {
-    "client/src/**": {
-      "includeFiles": "client/dist/**"
+    "my.html": {
+      "maxDuration": 10
     }
   },
-  "buildCommand": "npm run build",
-  "outputDirectory": "client/dist",
-  "installCommand": "npm install"
+  "regions": ["iad1", "sfo1", "lhr1"],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
